@@ -1,0 +1,48 @@
+# IntelliJ IDEA
+.idea/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+
+# NetBeans
+.nb-gradle/
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
+
+# Log files
+*.log
+
+# Spring Boot devtools
+.spring-boot-devtools/
+
+# Spring Boot Jar
+*.jar
+*.war
+*.ear
+
+# JVM files
+*.class
+*.jar
+
+# IDE project files
+*.iml
+*.iws
+
+/.metadata
