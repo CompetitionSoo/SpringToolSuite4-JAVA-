@@ -41,31 +41,6 @@
 	              </div>
 	          </div>
       	 </div>
-	   </div>
-		  
-		  
-		  
-			
-        <h1>Cook bop 맛있는 고민들!	</h1>
-  		<h3>궁금한점을 글로 남겨보세요!	</h3>
-		<table class="table">
-		    <thead class="table-dark">
-		        <tr>
-					<th>번호</th>
-		            <th>제목</th>
-		            <th>작성일시</th>
-		        </tr>
-		    </thead>
-		    <tbody>
-		        <tr th:each="question, loop  : ${questionList}">
-					<td th:text="${question.id}"></td>
-					<td>
-					   <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
-					</td>
-		            <td th:text="${question.createDate}"></td>
-		        </tr>
-		    </tbody>
-		</table>
-		<a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
+	   </div>  
 	</div>
 </html>
