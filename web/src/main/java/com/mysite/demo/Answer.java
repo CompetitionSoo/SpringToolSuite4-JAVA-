@@ -1,4 +1,4 @@
-package com.mysite.demo.answer;
+package com.mysite.demo;
 
 import java.time.LocalDateTime;
 
@@ -7,24 +7,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
-import com.mysite.demo.question.Question;
 
-@Getter 
-@Setter 
-@Entity 
-public class Answer { 
-    @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+@Getter
+@Setter
+@Entity
+public class Answer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(columnDefinition = "TEXT") 
-    private String content; 
+    @Column(columnDefinition = "TEXT")
+    private String content;
 
     private LocalDateTime createDate; 
-
-    @ManyToOne 
-    private Question question; 
+    
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;       
 }

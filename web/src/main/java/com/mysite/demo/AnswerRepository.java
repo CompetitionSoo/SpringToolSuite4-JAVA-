@@ -1,7 +1,6 @@
-package com.mysite.demo.answer;
+package com.mysite.demo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AnswerRepository extends JpaRepository<Answer, Integer> {
-
 }

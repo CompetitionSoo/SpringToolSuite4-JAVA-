@@ -1,63 +1,212 @@
-/* 전체 페이지 기본 여백 초기화 */
+*{
+	font-size: 20px;
+}
+header{
+		font-family: 'KCCImkwontaek';
+		
+	}
+
+
+/* 기본 여백 초기화 */
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-/* header의 상단 여백 제거 */
-header {
-    margin-top: 0;
-    padding-top: 0;
+/* 네비게이션 바 상단에 고정 */
+.navbar {
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 카테고리 메뉴 설정 */
+/* 네비게이션 바 */
+.navbar-dark .navbar-nav .nav-link {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ff8c00;
+}
+
+/* 네비게이션 메뉴 항목 오른쪽에 배치 */
+.navbar-nav.ms-auto {
+    margin-left: auto; /* 오른쪽 정렬 */
+}
+
+.header-container {
+	
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: space-between; /* 양 끝에 배치 */
+    padding: 20px;
+}
+
+.header-left {
+    flex: 0 0 50%; /* 왼쪽 영역은 60% 차지 */
+    padding-right: 20px; /* 이미지와 텍스트 사이에 간격 추가 */
+}
+
+.header-right {
+    flex: 0 0 40%; /* 오른쪽 영역은 40% 차지 */
+}
+
+.header-image {
+    width: 100%; /* 이미지가 부모 요소의 너비에 맞게 크기 조정 */
+    height: auto; /* 비율에 맞게 자동 크기 조정 */
+    border-radius: 8px; /* 이미지에 둥근 모서리 추가 (선택 사항) */
+}
+
+h1, h2  {
+    margin: 0;
+    padding: 5px 0;
+	font-size: 3rem;
+}
+
+
+/* 카테고리 메뉴 */
 .category-bar {
-    padding: 20px 0; /* 상하 여백만 주고 좌우는 0 */
-    justify-content: center; /* 카드를 중앙에 배치 */
+    padding: 20px 0;
+    justify-content: center;
     display: flex;
-    gap: 30px; /* 카드들 간의 간격을 30px로 설정 */
-    flex-wrap: wrap; /* 화면 크기에 따라 카드가 다음 줄로 넘어가도록 설정 */
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-/* 카테고리 카드 스타일 */
+/* 카테고리 카드 */
 .category-card {
-    width: 200px; /* 카드 너비 */
+    width: 250px;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 카드 그림자 효과 */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin: 10px; /* 각 카드에 10px 여백 추가 */
-    padding: 15px; /* 카드 내부 여백 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 15px;
+    background-color: #fff;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* 카드 이미지 */
+.category-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
 /* 카드 hover 효과 */
 .category-card:hover {
-    transform: translateY(-10px);
+    transform: scale(1.05);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* 네비게이션 바 여백 설정 */
-.navbar {
-    margin: 0; /* 기본 여백 제거 */
-    padding: 0; /* 패딩 제거 */
-}
-
-/* 네비게이션 링크 스타일 */
-.navbar-nav .nav-link {
-    font-size: 1.1rem;
-    font-weight: bold;
+.category-card h5 {
+    font-size: 1.2rem;
     color: #333;
-    margin-right: 15px;
+    margin-bottom: 10px;
 }
 
-/* 모바일 화면에서 여백을 없애기 위해서는 추가적인 설정을 할 수 있음 */
+.category-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* 모바일 환경 */
 @media (max-width: 768px) {
     .category-bar {
-        flex-direction: column; /* 모바일에서는 세로로 정렬 */
+        flex-direction: column;
         align-items: center;
     }
 
     .category-card {
-        width: 90%; /* 모바일에서는 카드 너비를 넓게 설정 */
-        margin-bottom: 20px; /* 카드 간격을 넓게 */
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        margin-right: 10px;
     }
 }
+
+/* 푸터 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/*컵밥 메뉴소개 관련 css 파일 */
+/* 메뉴 리스트 스타일 */
+.menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* 개별 메뉴 항목 스타일 */
+.menu-item {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 메뉴 항목 이미지 스타일 */
+.menu-item-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* 메뉴 제목 스타일 */
+.menu-item h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* 메뉴 설명 스타일 */
+.menu-item p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* 가격 스타일 */
+.price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-top: 10px;
+}
+
+/* 컵밥선택 관련 CSS */
+

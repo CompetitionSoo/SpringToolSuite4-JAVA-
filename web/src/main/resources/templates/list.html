@@ -1,0 +1,142 @@
+<html layout:decorate="~{base}">
+<head>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+		function handleCheck(text){
+			swal({
+			  icon: "success",
+			  title: "주문 내역",
+			  text: text
+			});
+		}
+				
+		function handleOrder(){
+			swal({
+			  icon: "success",
+			  title: "주문 완료",
+			  text: "정말 주문을 완료하시겠습니까?"
+			});
+		}
+		
+		async function showAlert() {
+		  const result = await Swal.fire({
+		    title: '경고',
+		    text: '확인 버튼을 누르세요!',
+		    icon: 'warning',
+		    confirmButtonText: '확인'
+		  });
+		  
+		  // 확인 버튼을 누른 후 실행할 코드
+		  console.log('경고창 확인 버튼을 누름');
+		}
+		
+        // 메뉴 선택 시 가격 계산
+        function updateTotal() {
+            let total = 0; // 총 가격
+            let selectedItems = []; // 선택된 항목 정보 저장
+
+            // 각 메뉴 항목 순회
+            document.querySelectorAll('.menu-item').forEach(function(menuItem) {
+                let checkbox = menuItem.querySelector('input[type="checkbox"]');
+                if (checkbox.checked) { // 체크된 항목만 처리
+                    let price = parseInt(checkbox.getAttribute('data-price')); // 가격 정보
+                    let quantity = parseInt(menuItem.querySelector('input[type="number"]').value) || 1; // 수량 가져오기 (기본값 1)
+
+                    // 총 가격 계산
+                    total += price * quantity;
+
+                    // 선택한 항목 이름과 수량 저장
+                    let itemName = menuItem.querySelector('h3').innerText;
+                    selectedItems.push(`${itemName} (${quantity}개)`);
+                }
+            });
+
+            // 총 금액 표시
+            document.getElementById('total-price').innerText = '총 금액: ' + total + '원';
+
+            // 선택된 항목 리스트 저장
+            document.getElementById('selected-items').value = selectedItems.join(', '); 
+        }
+
+        // 계산하기 버튼 클릭 시 알림창 표시
+		document.title = "CookBop 주문 시스템"
+        function calculate() {
+            let totalPrice = document.getElementById('total-price').innerText; // 총 금액
+            let selectedItems = document.getElementById('selected-items').value; // 선택된 항목 리스트
+
+            if (totalPrice === '총 금액: 0원') {
+                alert('메뉴를 선택하세요.');
+            } else {
+                handleCheck(`선택하신 항목: ${selectedItems}\n결제하실 금액은 ${totalPrice} 입니다. 주문하시겠습니까`);
+				// handleOrder()
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <h2>컵밥 메뉴</h2>    
+        <div class="menu-list">
+            <!-- 불고기 컵밥 -->
+            <div class="menu-item">
+                <img src="/images/bulgogi.jpg" alt="불고기 컵밥" class="menu-item-image" />
+                <h3>불고기 컵밥</h3>
+                <p>달콤한 불고기와 함께 매콤한 <br> 따뜻한 컵밥입니다.</p>
+                <p class="price">가격: 8,500원</p>
+                <input type="checkbox" data-price="8500" onchange="updateTotal()" /> 선택
+                <input type="number" min="1" value="1" onchange="updateTotal()" /> 수량
+            </div>
+
+            <!-- 제육볶음 컵밥 -->
+            <div class="menu-item">
+                <img src="/images/제육컵밥.jpg" alt="제육볶음 컵밥" class="menu-item-image" />
+                <h3>제육볶음 컵밥</h3>
+                <p>매콤한 제육볶음과 밥이 완벽하게 어우러진 컵밥입니다.</p>
+                <p class="price">가격: 7,500원</p>
+                <input type="checkbox" data-price="7500" onchange="updateTotal()" /> 선택
+                <input type="number" min="1" value="1" onchange="updateTotal()" /> 수량
+            </div>
+
+            <!-- 양념치킨 컵밥 -->
+            <div class="menu-item">
+                <img src="/images/양념치킨컵밥.jpg" alt="양념치킨 컵밥" class="menu-item-image" />
+                <h3>양념치킨 컵밥</h3>
+                <p>매콤하고 달콤한 양념치킨이 가득 들어간 컵밥입니다.</p>
+                <p class="price">가격: 8,000원</p>
+                <input type="checkbox" data-price="8000" onchange="updateTotal()" /> 선택
+                <input type="number" min="1" value="1" onchange="updateTotal()" /> 수량
+            </div>
+
+            <!-- 비빔 불고기 컵밥 -->
+            <div class="menu-item">
+                <img src="/images/비빔불고기컵밥.jpg" alt="비빔 불고기 컵밥" class="menu-item-image" />
+                <h3>비빔 불고기 컵밥</h3>
+                <p>매운 양념의 불고기와 밥을 비벼 먹는 스타일의 컵밥입니다.</p>
+                <p class="price">가격: 7,500원</p>
+                <input type="checkbox" data-price="7500" onchange="updateTotal()" /> 선택
+                <input type="number" min="1" value="1" onchange="updateTotal()" /> 수량
+            </div>
+
+            <!-- 반반 컵밥 -->
+            <div class="menu-item">
+                <img src="/images/반반컵밥.jpg" alt="반반 컵밥" class="menu-item-image" />
+                <h3>반반 컵밥</h3>
+                <p>불고기와 제육볶음을 한 그릇에 반반으로 즐길 수 있는 컵밥입니다.</p>
+                <p class="price">가격: 8,000원</p>
+                <input type="checkbox" data-price="8000" onchange="updateTotal()" /> 선택
+                <input type="number" min="1" value="1" onchange="updateTotal()" /> 수량
+            </div>
+        </div>
+
+        <!-- 총 금액 표시 -->
+        <div id="total-price">총 금액: 0원</div>
+
+        <!-- 선택된 항목 저장 -->
+        <input type="hidden" id="selected-items" value="" />
+
+        <!-- 계산하기 버튼 -->
+        <button onclick="calculate()">계산하기</button>
+    </div>
+</body>
+</html>

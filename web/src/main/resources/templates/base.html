@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CupBap - 간편하고 맛있는 한 끼를 제공합니다. 다양한 컵밥 메뉴를 만나보세요!">
+    <meta name="keywords" content="컵밥, 간편식, 한 끼, 불고기, 제육볶음, 비빔밥">
+    <meta name="author" content="CupBap">
+    <title>CookBop - 간편하고 맛있는 한 끼!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css"> <!-- 별도의 CSS 파일 링크 -->
+
+	<style>
+	@font-face {
+	    font-family: 'KCCImkwontaek';
+	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/KCCImkwontaek.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	
+	</style>
+</head>
+<body>
+
+    <!-- 네비게이션 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+        <div class="container">
+            <a class="navbar-brand" href="/">🍚 CookBop </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/list">메뉴 선택</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/question">자주묻는질문</a></li>
+                </ul>
+                <!-- 로그인, 회원가입, 주문 내역 메뉴 항목 추가 -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/signup">회원가입</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/order-history">주문 내역</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+	<th:block layout:fragment="content"></th:block>
+	<!-- 기본 템플릿 안에 삽입될 내용 End -->
+	
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2025 CupBap | <a href="/contact">문의하기</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+	

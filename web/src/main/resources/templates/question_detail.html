@@ -1,22 +1,17 @@
-<h1 th:text="${question.subject}"></h1>
-<div th:text="${question.content}"></div>
+<html layout:decorate="~{base}">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문 상세보기</title>
+</head>
+<body>
+    <h2 th:text="${question.subject}"></h2>  <!-- 질문의 제목 출력 -->
+    <p th:text="${question.content}"></p>  <!-- 질문의 내용 출력 -->
 
-<h5 th:text="|${#lists.size(question.answerList)}로 선택하였습니다.|"></h5>
-<div>
-    <ul>
-        <li th:each="answer : ${question.answerList}" th:text="${answer.content}"></li>
-    </ul>
-</div>
 
-
-<form th:action="@{|/answer/create/${question.id}|}" method="post">
-    <!-- <textarea name="content" id="content" rows="30"></textarea> -->
-	<select name="content" id="content">
-		<option value="small">S</option>
-		<option value="medium">M</option>
-		<option value="large">L</option>
-		<option value="x-large">XL</option>
-		<option value="xx-large">XXL</option>
-	</select>
-    <input type="submit" value="선택하였습니다.">
-</form>
+    <!-- 뒤로 가기 버튼 -->
+    <a href="/question">뒤로 가기</a>
+</body>
+</html>
